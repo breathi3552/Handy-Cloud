@@ -1,7 +1,7 @@
 # Handy Cloud P0 Base Build
 
-- Source commit: `06fdb6b872c3f6554429080e4273d97da669145f`
-- CI run: https://github.com/breathi3552/Handy-Cloud/actions/runs/33492435602
+- Source commit: `a7fc08c788d558f0ef93facdddacb57974ede2b5`
+- CI run: https://github.com/breathi3552/Handy-Cloud/actions/runs/33498251965
 - Target: `x86_64-pc-windows-msvc`
 - Build signing: unsigned P0 fork build
 - Updater artifacts: disabled for P0
@@ -18,5 +18,5 @@
 - NOT INTERACTIVE-CI VERIFIED — physical global Win+H suppression, keydown/keyup delivery and end-to-end Push-To-Talk behavior require an interactive Windows desktop smoke test; GitHub-hosted runners cannot truthfully certify that shell-level behavior.
 
 ## SHA-256
-eb76e36f1d8d013727a8e601758e6ee404d82e201e8d80a8b7a00d92a0e76679  release-builds/p0-base/Handy Cloud_0.9.6_x64-setup.exe
-12ed315ebe0053cedafb626a6707c58dcc2707deb73308041fc3d5e40e81e48a  release-builds/p0-base/Handy Cloud_0.9.6_x64_en-US.msi
+ffb6bc7e0019bb3ae3f77e865ca419cc98d2498a9841f180c60e5316c1e950a4  release-builds/p0-base/Handy Cloud_0.9.6_x64-setup.exe
+1ab6a669101c5c21cc1a1b7955529a72473d74eba1803055e1e704aa145e612e  release-builds/p0-base/Handy Cloud_0.9.6_x64_en-US.msi
