@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handy Cloud 品牌图标方案一原型设计（涂鸦手 + 云朵袖口 + 指尖声波）</title>
+    <style>
+        :root {
+            --bg: #090e17;
+            --surface: #111927;
+            --surface-hover: #192337;
+            --border: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --accent-pink: #faa2ca;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 40px 24px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 28px;
+        }
+        .header-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(56, 189, 248, 0.12);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            margin-bottom: 14px;
+        }
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header h1 span {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .header p {
+            color: var(--text-muted);
+            font-size: 16px;
+            margin-top: 10px;
+            max-width: 860px;
+        }
+        .section {
+            margin-bottom: 56px;
+        }
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #f1f5f9;
+        }
+        .section-title span.badge {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 10px;
+            border-radius: 6px;
+            background: #1e293b;
+            color: #94a3b8;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.5);
+        }
+        .card.featured {
+            border-color: rgba(56, 189, 248, 0.4);
+            background: linear-gradient(180deg, rgba(56, 189, 248, 0.05) 0%, var(--surface) 100%);
+        }
+        .preview-box {
+            width: 220px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #080c14;
+            background-image: 
+                linear-gradient(45deg, #0e1422 25%, transparent 25%), 
+                linear-gradient(-45deg, #0e1422 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #0e1422 75%), 
+                linear-gradient(-45deg, transparent 75%, #0e1422 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+        }
+        .card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .tag-pill {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 9999px;
+        }
+        .pill-pink { background: #be185d; color: #fdf2f8; }
+        .pill-blue { background: #0284c7; color: #f0f9ff; }
+        .pill-cyan { background: #0e7490; color: #ecfeff; }
+        .pill-squircle { background: #334155; color: #f8fafc; }
+
+        /* Taskbar Simulation */
+        .taskbar-container {
+            background: #06090f;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 32px;
+        }
+        .taskbar-mockup {
+            border-radius: 14px;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 16px 0 28px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .mockup-dark {
+            background: rgba(18, 24, 38, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #f8fafc;
+        }
+        .mockup-light {
+            background: rgba(241, 245, 249, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #0f172a;
+        }
+        .taskbar-apps {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            opacity: 0.5;
+        }
+        .taskbar-app-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background: currentColor;
+            opacity: 0.3;
+        }
+        .tray-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 6px 16px;
+            border-radius: 10px;
+        }
+        .mockup-dark .tray-area {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .mockup-light .tray-area {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .tray-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .tray-cell .icon-wrap {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scale-grid {
+            display: flex;
+            align-items: flex-end;
+            gap: 36px;
+            background: #080c14;
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .scale-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .scale-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                品牌设计推演 · 方案一原型汇报
+            </div>
+            <h1><span>Handy Cloud</span> 品牌图标与缩略图系统</h1>
+            <p>
+                按方案一进行全新设计：<b>“云朵袖口 + 涂鸦手掌 + 指尖声波”</b>。
+                完美继承原版 Handy 标志性的粗描边涂鸦手势与贴纸质感（Die-cut Sticker），在手腕处无缝衔接一团蓬松圆润的云朵袖口，指尖发散 3 道手绘语音声波。
+            </p>
+        </div>
+
+        <!-- Section 1: 主图标方案对比 -->
+        <div class="section">
+            <div class="section-title">
+                一、512x512 应用主图标（Master App Icon & 配色探索）
+                <span class="badge">保留街头涂鸦感</span>
+            </div>
+            <div class="grid-3">
+                <!-- Variant A -->
+                <div class="card featured">
+                    <div class="preview-box">
+                        <img src="assets/master_sticker_pink.svg" width="180" height="180" alt="Option 1-A">
+                    </div>
+                    <h3>方案 1-A：经典马卡龙粉与纯白云朵</h3>
+                    <p>
+                        <b>【强烈推荐 · 经典传承】</b>采用原版经典 #FAA2CA 糖果粉手掌，粗黑马克笔描边，底部包裹纯白蓬松云朵袖口，上方点缀天青指尖声波。粗白色贴纸切边与环境柔光，涂鸦潮流感拉满！
+                    </p>
+                    <span class="tag-pill pill-pink">原版血统 · 推荐</span>
+                </div>
+
+                <!-- Variant B -->
+                <div class="card">
+                    <div class="preview-box">
+                        <img src="assets/master_sticker_white.svg" width="180" height="180" alt="Option 1-B">
+                    </div>
+                    <h3>方案 1-B：纯白珍珠手与天蓝云朵</h3>
+                    <p>
+                        纯白手掌配以深黑描边，手腕处为糖果天蓝云朵袖口，指尖为清透电光蓝声波。色调更偏向云端生产力工具的清新与纯净。
+                    </p>
+                    <span class="tag-pill pill-blue">清爽天蓝</span>
+                </div>
+
+                <!-- Variant C -->
+                <div class="card">
+                    <div class="preview-box">
+                        <img src="assets/master_squircle_pink.svg" width="180" height="180" alt="Option 1-C">
+                    </div>
+                    <h3>方案 1-C：现代桌面圆角矩形（Squircle）</h3>
+                    <p>
+                        契合现代 macOS 与 Windows 11 图标规范：深邃天青渐变底座（#78c3ef -> #1d4ed8），内部容纳立体贴纸风的涂鸦手与云朵袖口。
+                    </p>
+                    <span class="tag-pill pill-squircle">桌面原生规范</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: 任务栏与系统托盘缩略图 -->
+        <div class="section">
+            <div class="section-title">
+                二、任务栏与系统托盘缩略图（Tray Icons：多状态与光暗模式）
+                <span class="badge">超高识别度几何剪影</span>
+            </div>
+            <div class="taskbar-container">
+                <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 12px;">
+                    托盘图标尺寸极小（通常仅 16x16 ~ 32x32）。我们提炼了原版经典手掌的镂空双指与拇指剪影，让其从三瓣云朵袖口中自然伸出，在极小尺寸下依然层次分明、绝不糊边。
+                </p>
+
+                <!-- Dark Taskbar -->
+                <h4 style="font-size: 14px; font-weight: 700; color: #94a3b8; margin-top: 16px;">
+                    🖥️ Windows 11 / macOS 深色任务栏（Dark Taskbar · 高反差纯白剪影）
+                </h4>
+                <div class="taskbar-mockup mockup-dark">
+                    <div class="taskbar-apps">
+                        <div class="taskbar-app-icon"></div>
+                        <div class="taskbar-app-icon"></div>
+                        <div class="taskbar-app-icon"></div>
+                    </div>
+                    <div class="tray-area">
+                        <div class="tray-cell">
+                            <div class="icon-wrap"><img src="assets/tray_idle_dark.svg" width="24" height="24"></div>
+                            <span>空闲态 (Idle)</span>
+                        </div>
+                        <div class="tray-cell">
+                            <div class="icon-wrap"><img src="assets/tray_recording_dark.svg" width="24" height="24"></div>
+                            <span style="color: #ef4444;">录音中 (Rec)</span>
+                        </div>
+                        <div class="tray-cell">
+                            <div class="icon-wrap"><img src="assets/tray_transcribing_dark.svg" width="24" height="24"></div>
+                            <span style="color: #38bdf8;">转写中 (Trans)</span>
+                        </div>
+                        <div class="tray-cell">
+                            <div class="icon-wrap"><img src="assets/tray_warning_dark.svg" width="24" height="24"></div>
+                            <span style="color: #f59e0b;">告警态 (Warn)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Light Taskbar -->
+                <h4 style="font-size: 14px; font-weight: 700; color: #94a3b8; margin-top: 24px;">
+                    ☀️ Windows 11 / macOS 浅色任务栏（Light Taskbar · 深灰高对比剪影）
+                </h4>
+                <div class="taskbar-mockup mockup-light">
+                    <div class="taskbar-apps">
+                        <div class="taskbar-app-icon"></div>
+                        <div class="taskbar-app-icon"></div>
+                        <div class="taskbar-app-icon"></div>
+                    </div>
+                    <div class="tray-area">
+                        <div class="tray-cell">
+                            <div class="icon-wrap"><img src="assets/tray_idle_light.svg" width="24" height="24"></div>
+                            <span>空闲态 (Idle)</span>
+                        </div>
+                        <div class="tray-cell">
+                            <div class="icon-wrap"><img src="assets/tray_recording_light.svg" width="24" height="24"></div>
+                            <span style="color: #dc2626;">录音中 (Rec)</span>
+                        </div>
+                        <div class="tray-cell">
+                            <div class="icon-wrap"><img src="assets/tray_transcribing_light.svg" width="24" height="24"></div>
+                            <span style="color: #0284c7;">转写中 (Trans)</span>
+                        </div>
+                        <div class="tray-cell">
+                            <div class="icon-wrap"><img src="assets/tray_warning_light.svg" width="24" height="24"></div>
+                            <span style="color: #d97706;">告警态 (Warn)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: 多尺寸渲染阶梯 -->
+        <div class="section">
+            <div class="section-title">
+                三、从大到小多尺度辨识度检验（128px ~ 16px）
+                <span class="badge">阶梯缩放</span>
+            </div>
+            <div class="scale-grid">
+                <div class="scale-item">
+                    <img src="assets/master_sticker_pink.svg" width="128" height="128">
+                    <div class="scale-label">128x128 桌面大图</div>
+                </div>
+                <div class="scale-item">
+                    <img src="assets/master_sticker_pink.svg" width="64" height="64">
+                    <div class="scale-label">64x64 中等应用</div>
+                </div>
+                <div class="scale-item">
+                    <img src="assets/master_sticker_pink.svg" width="32" height="32">
+                    <div class="scale-label">32x32 任务栏/Dock</div>
+                </div>
+                <div class="scale-item">
+                    <img src="assets/master_sticker_pink.svg" width="24" height="24">
+                    <div class="scale-label">24x24 系统托盘</div>
+                </div>
+                <div class="scale-item">
+                    <img src="assets/master_sticker_pink.svg" width="16" height="16">
+                    <div class="scale-label">16x16 极小状态栏</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
